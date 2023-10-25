@@ -1,0 +1,15 @@
+@use 'mixins' as *;
+
+:host {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+}
+
+.main {
+  overflow-y: auto;
+
+  @include mobile {
+    padding: 12px;
+  }
+}

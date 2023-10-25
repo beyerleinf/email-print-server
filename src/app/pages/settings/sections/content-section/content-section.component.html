@@ -1,0 +1,32 @@
+<ng-container *ngIf="settingsService.settings$ | async as settings">
+  <app-layout-section>
+    <div class="container">
+      <ng-container *ngIf="settingsService.printers$ | async as printers">
+        <div class="printer-selection">
+          <h4>Drucker wählen</h4>
+
+          <div class="row">
+            <mat-form-field>
+              <mat-label>Drucker</mat-label>
+              <mat-select #printerSelect [value]="settings.printer_id">
+                <mat-option *ngFor="let printer of printers" [value]="printer.id">
+                  {{ printer.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <button
+              mat-raised-button
+              class="btn"
+              color="primary"
+              [disabled]="!printerSelect.value"
+              (click)="settingsService.setPrinter(printerSelect.value)"
+            >
+              Speichern
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </app-layout-section>
+</ng-container>

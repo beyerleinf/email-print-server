@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section {
+  box-sizing: border-box;
+  min-width: min(100%, 1024px);
+  max-width: min(100%, 1024px);
+  padding: 0 16px;
+  margin-top: 16px;
+
+  &.full-width {
+    min-width: unset;
+    max-width: unset;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+  }
+}

@@ -1,8 +1,8 @@
 [package]
 name = "email-print-server"
-version = "0.0.0"
-description = "A Tauri App"
-authors = ["you"]
+version = "0.0.1"
+description = "Receives emails and prints them."
+authors = ["Fabian Beyerlein"]
 license = ""
 repository = ""
 edition = "2021"
@@ -19,6 +19,10 @@ serde_json = "1.0"
 imap = "2.4.1"
 printers = "1.2.0"
 mailparse = "0.14.0"
+directories = "5.0.1"
+microkv = "0.2.9"
+rusqlite = { version = "0.29.0", features = ["bundled"] }
+rand = "0.8.5"
 
 [features]
 # this feature is used for production builds or when `devPath` points to the filesystem
