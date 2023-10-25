@@ -3,7 +3,7 @@
   flex-direction: column;
 
   .printer-selection {
-    width: 50%;
+    width: 100%;
 
     mat-form-field {
       width: 100%;
@@ -18,4 +18,5 @@
 
 .btn {
   height: 56px;
+  width: fit-content;
 }

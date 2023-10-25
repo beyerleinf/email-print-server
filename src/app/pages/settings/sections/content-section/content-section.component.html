@@ -24,6 +24,16 @@
             >
               Speichern
             </button>
+
+            <button
+              mat-stroked-button
+              class="btn"
+              color="secondary"
+              [disabled]="!printerSelect.value"
+              (click)="settingsService.printTestPage()"
+            >
+              Test-Seite drucken
+            </button>
           </div>
         </div>
       </ng-container>

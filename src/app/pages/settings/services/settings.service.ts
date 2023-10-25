@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 const CMD_GET_PRINTERS = 'get_printers';
 const CMD_SET_PRINTER = 'set_printer';
 const CMD_GET_SETTINGS = 'get_settings';
+const CMD_PRINT_TEST_PAGE = 'print_test_page';
 
 interface Printer {
   id: string;
@@ -43,6 +44,15 @@ export class SettingsService {
     try {
       await invoke(CMD_SET_PRINTER, { printerId });
       this.snackbar.open('✅ Drucker festgelegt!', undefined, { duration: 3000 });
+    } catch (error) {
+      this.snackbar.open(`❌ Das hat nicht geklappt: ${(error as Error).toString()}`, undefined, { duration: 3000 });
+    }
+  }
+
+  public async printTestPage() {
+    try {
+      await invoke(CMD_PRINT_TEST_PAGE);
+      this.snackbar.open('✅ Test-Seite wird gedruckt!', undefined, { duration: 3000 });
     } catch (error) {
       this.snackbar.open(`❌ Das hat nicht geklappt: ${(error as Error).toString()}`, undefined, { duration: 3000 });
     }

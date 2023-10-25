@@ -46,14 +46,14 @@ impl ConfigStore {
     }
   }
 
-  pub fn get_value<T>(&self, name: String) -> Option<T>
+  pub fn get_value<T>(&self, name: &str) -> Option<T>
   where
     T: DeserializeOwned + 'static,
   {
     self._db.get::<T>(name).unwrap()
   }
 
-  pub fn store_value<T: Serialize>(&self, name: String, value: T) {
+  pub fn store_value<T: Serialize>(&self, name: &str, value: T) {
     self._db.put(name, &value).unwrap();
   }
 }
@@ -63,7 +63,7 @@ fn init_sqlite_store(connection: &Connection) -> Result<Vec<u8>, ()> {
 
   let res = match statement {
     Ok(stmt) => get_key(stmt),
-    Err(_) => setup_sqlite(&connection).unwrap(),
+    Err(_) => setup_sqlite(connection).unwrap(),
   };
 
   Ok(res.key)
